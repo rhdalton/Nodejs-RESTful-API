@@ -1,7 +1,9 @@
 /**
  * Example RESTful API with GET, POST, PUT, DELETE actions
  * Using Node.js Express web application framework
- * This example app can interact with a MongoDB of movies
+ * 
+ * This example app can interact with a json object (can be modified to access data from MongoDB)
+ * For this example the db object is a directory of Movies
  */
 const func = require('./functions');
 const express = require('express');
@@ -13,6 +15,7 @@ app.use(express.json());
 
 /** 
  * GET: List of movie id, title, year
+ *  with query parameters to sort by Title, Year
  */
 app.get('/api/movies', (req, res) => {
     res.header("Content-Type",'application/json');
