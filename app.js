@@ -1,8 +1,9 @@
 /**
- * Example RESTful API with GET, POST, PUT, DELETE actions
- * Using Node.js Express web application framework
+ * This is a basic example of a RESTful API in Node.js
  * 
- * This example app interacts with a json object (can edit to access data from MongoDB)
+ * Uses the Node.js Express web application framework
+ * Handles standard HTTP GET, POST, PUT, DELETE requests
+ * This example app interacts with a json object, but can be changed to access a MongoDB 
  * For this example the db object is a directory of Movies
  */
 const func = require('./functions');
