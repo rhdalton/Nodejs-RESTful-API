@@ -29,7 +29,7 @@ module.exports = {
 }
 
 
-// example Json object return from MongoDB
+// This would normally be an object from MongoDB, but for this example, I created a basic Json object to work with.
 const movieList = [
     {
         id: 1,
