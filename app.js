@@ -17,7 +17,14 @@ app.use(express.json());
 // helmet to ensure proper headers are passed
 // app.use(helmet());
 
-// set api/movies resource to movies router
+/**
+ * Set /api/movies resource to movies router
+ * GET /api/movies          returns all movies in db
+ * GET /api/movies/id       return details of single movie
+ * POST /api/movies         add new movie to db
+ * PUT /api/movies/id       update single movie
+ * DELETE /api/movies/id    delete single movie from db
+ */
 app.use('/api/movies', movies)
 
 app.listen(port, () => console.log(`Listening on port ${port}...`));

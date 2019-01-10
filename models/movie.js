@@ -8,6 +8,7 @@ function getMovieById(id) {
 }
 
 function validateMovie(movie) {
+    // use joi to validate fields
     const schema = {
         title: Joi.string().required(),
         year: Joi.number().integer().min(1900).max(2100).required(),
@@ -19,15 +20,13 @@ function validateMovie(movie) {
 }
 
 function getMovies() {
+    // return array of objects
     return movieList;
 }
 
-module.exports = {
-    getMovies,
-    getMovieById,
-    validateMovie
-}
-
+exports.getMovies = getMovies;
+exports.getMovieById = getMovieById;
+exports.validate = validateMovie;
 
 // This would normally be an object from MongoDB, but for this example, I created a basic Json object to work with.
 const movieList = [

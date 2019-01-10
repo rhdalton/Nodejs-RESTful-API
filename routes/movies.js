@@ -1,4 +1,4 @@
-const func = require('../functions');
+const { getMovies, getMovieById, validate } = require('../models/movie');
 const express = require('express');
 const router = express.Router();
 
@@ -8,13 +8,13 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     res.header("Content-Type",'application/json');
-    res.send(JSON.stringify(func.getMovies(), null, 4));
+    res.send(JSON.stringify(getMovies(), null, 4));
 });
 /**
  * GET: Movie details by Id
  */
 router.get('/:id', (req, res) => {
-    let movie = func.getMovieById(req.params.id);
+    let movie = getMovieById(req.params.id);
     // if movie id not found, return 404 error
     if (!movie) return res.status(404).send('Movie not found');
 
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     // validate new movie
     // get {result, error} with object destructuring
-    const { result, error } = func.validateMovie(req.body);
+    const { result, error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     // create new movie object and add to movies
@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
         id: movies.length + 1, // this would automatically be assigned if in real db
         title: result.value.title,
         year: result.value.year,
+        genre: result.value.genre,
         director: result.value.director,
         cast: result.value.cast,
         poster: result.value.poster
@@ -49,17 +50,18 @@ router.post('/', (req, res) => {
  */
 router.put('/:id', (req, res) => {
     // look up movie to check if it exists
-    let movie = func.getMovieById(req.params.id);
+    let movie = getMovieById(req.params.id);
 
     if (!movie) return res.status(404).send('Movie not found');
 
     // validate movie, get {error} with object destructuring 
-    const { error } = func.validateMovie(req.body);
+    const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     // update movie values
     movie.title = req.body.title;
     movie.year = req.body.year;
+    movie.genre = req.body.genre;
     movie.director = req.body.director;
     movie.cast = req.body.cast;
     movie.poster = req.body.poster;
@@ -71,7 +73,7 @@ router.put('/:id', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
     // check if movie exists
-    let movie = func.getMovieById(req.params.id);
+    let movie = getMovieById(req.params.id);
     if (!movie) return res.status(404).send('Movie not found');
 
     // delete movie
