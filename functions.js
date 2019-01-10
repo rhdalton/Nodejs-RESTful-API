@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 // get movie by id from db
 function getMovieById(id) {
-    return movies.find(m => m.id === parseInt(id));
+    return movieList.find(m => m.id === parseInt(id));
 }
 
 function validateMovie(movie) {
@@ -19,7 +19,7 @@ function validateMovie(movie) {
 }
 
 function getMovies() {
-    return movies;
+    return movieList;
 }
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
 
 
 // example Json object return from MongoDB
-const movies = [
+const movieList = [
     {
         id: 1,
         title: "The Dark Knight",
