@@ -1,60 +1,49 @@
-
-// basic functions for this API
 const Joi = require('joi');
+const { genreSchema } = require('./genre');
+const { directorSchema } = require('./director');
+const { castSchema } = require('./cast');
 
-// get movie by id from db
-function getMovieById(id) {
-    return movieList.find(m => m.id === parseInt(id));
-}
+const mongoose = require('mongoose');
+
+const Movie = mongoose.model('Movie', new mongoose.Schema({
+    title: {
+        type: String, 
+        required: true,
+        trim: true,
+        minlength: 1,
+        maxlength: 50
+    },
+    year: {
+        type: Number,
+        required: true,
+        min: 1900,
+        max: 2100
+    },
+    genres: {
+        type: [genreSchema],
+        required: true
+    },
+    director: {
+        type: [directorSchema],
+        required: true
+    },    
+    cast: {
+        type: [castSchema],
+        required: true
+    }
+}));
 
 function validateMovie(movie) {
     // use joi to validate fields
     const schema = {
-        title: Joi.string().required(),
+        title: Joi.string().min(1).max(50).required(),
         year: Joi.number().integer().min(1900).max(2100).required(),
-        director: Joi.string().required(),
-        cast: Joi.array().items(Joi.string()),
-        poster: Joi.string()
+        genreIds: Joi.array().items(Joi.objectId()).required(),
+        directorIds: Joi.array().items(Joi.objectId()).required(),        
+        actorIds: Joi.array().items(Joi.objectId()).required()
     }
     return Joi.validate(movie, schema);
 }
 
-function getMovies() {
-    // return array of objects
-    return movieList;
-}
-
-exports.getMovies = getMovies;
-exports.getMovieById = getMovieById;
+exports.Movie = Movie;
 exports.validate = validateMovie;
-
-// This would normally be an object from MongoDB, but for this example, I created a basic Json object to work with.
-const movieList = [
-    {
-        id: 1,
-        title: "The Dark Knight",
-        year: 2008,
-        genre: ["Action","Thriller"],
-        director: "Christopher Nolan",
-        cast: ["Christian Bale", "Aaron Eckhart", "Heath Ledger"],
-        poster: "top-gun.png"
-    },
-    {
-        id: 2,
-        title: "Titanic",
-        year: 1997,
-        genre: ["Drama", "Romance"],
-        director: "James Cameron",
-        cast: ["Leonardo DiCaprio", "Kate Winslet"],
-        poster: "titanic.png"
-    },
-    {
-        id: 3,
-        title: "The Avengers",
-        year: 2012,
-        genre: ["Fantasy", "Science Fiction"],
-        director: "Joss Whedon",
-        cast: ["Chris Evans", "Robert Downey Jr.", "Chris Hemsworth"],
-        poster: "the-avengers.png"
-    },
-]

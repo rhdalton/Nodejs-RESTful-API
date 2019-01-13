@@ -1,30 +1,17 @@
 /**
- * This is a basic example of a RESTful API in Node.js
+ * This is an example Nodejs RESTful API App
  * 
- * Uses the Node.js Express web application framework
- * Handles standard HTTP GET, POST, PUT, DELETE requests
- * This example app interacts with a json object, but can be changed to access a MongoDB 
- * For this example the db object is a directory of Movies
+ * Uses the Node.js Express application framework
  */
-const helmet = require('helmet');
-const movies = require('./routes/movies');
+const winston = require('winston');
 const express = require('express');
 const app = express();
+
+require('./startup/logging');
+require('./startup/routes')(app);
+require('./startup/db')();
+require('./startup/config')();
+require('./startup/validation')();
+
 const port = process.env.PORT || 3000;
-
-// format body as json
-app.use(express.json());
-// helmet to ensure proper headers are passed
-// app.use(helmet());
-
-/**
- * Set /api/movies resource to movies router
- * GET /api/movies          returns all movies in db
- * GET /api/movies/id       return details of single movie
- * POST /api/movies         add new movie to db
- * PUT /api/movies/id       update single movie
- * DELETE /api/movies/id    delete single movie from db
- */
-app.use('/api/movies', movies)
-
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => winston.info(`Listening on port ${port}...`));

@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "JWT_PRIVATE_KEY",
+    "MongoDBConnectionString": "mongodb://localhost/moviesapp"
+}
