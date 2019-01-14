@@ -36,7 +36,7 @@ const movieSchema = new mongoose.Schema({
 const Movie = mongoose.model('Movie', movieSchema);
 
 // method to get people from POST, put in array and return
-movieSchema.methods.getPeople = function(arr) {
+movieSchema.methods.getPeople = async function(arr) {
     var pArray = [];
     for (var i = 0; i < arr.length; i++) {
         var person = await this.findById(arr[i]);

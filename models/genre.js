@@ -13,7 +13,7 @@ const genreSchema = new mongoose.Schema({
 
 const Genre = mongoose.model('Genre', genreSchema);
 
-genreSchema.methods.getGenres = function(arr) {
+genreSchema.methods.getGenres = async function(arr) {
     var gArray = [];
     for (var i = 0; i < arr.length; i++) {
         var genre = await this.findById(arr[i]);
