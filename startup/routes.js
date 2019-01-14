@@ -14,5 +14,6 @@ module.exports = function(app) {
     app.use('/api/genres', genres);
     app.use('/api/users', users);
     app.use('/api/auth', auth);
+    // catch Express errors in error.js middleware
     app.use(error);
 }

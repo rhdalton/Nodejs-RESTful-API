@@ -4,8 +4,6 @@ const admin = require('../middleware/admin');
 const express = require('express');
 const router = express.Router();
 
-
-
 // Get All Genres, public access
 router.get('/', async (req, res) => {
     const genres = await Genre.find().sort('name');

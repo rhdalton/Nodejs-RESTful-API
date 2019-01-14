@@ -10,5 +10,5 @@ module.exports = function (handler) {
         catch (ex) {
             next(ex);
         }
-    }    
+    }
 }
