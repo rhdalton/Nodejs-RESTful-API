@@ -10,6 +10,15 @@ router.get('/', async (req, res) => {
     res.send(genres);
 });
 
+// Get Genre by Id, public access
+router.get('/:id', async (req, res) => {
+    const genre = await Genre.findById(req.params.id);
+
+    if (!genre) return res.status(404).send('Genre with given Id not found.');
+    
+    res.send(genres);
+});
+
 // Add new Genre, is Authenticated and is Admin
 router.post('/', [auth, admin], async (req, res) => {
     const { error } = validate(req.body); 
