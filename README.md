@@ -1,8 +1,8 @@
 # Nodejs RESTful API Example
 
-This is a RESTful API created with Node.js to demonstrate various coding techniques and practices.
+A RESTful API created with Node.js to demonstrate various coding techniques and practices.
 
-The App catalogs movies and people accessible by registered users with defined permissions.
+This example app catalogs movies and people accessible by registered users with defined permissions.
 
 **Features Include:**
 - Express application framework
