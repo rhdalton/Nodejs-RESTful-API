@@ -13,6 +13,17 @@ const genreSchema = new mongoose.Schema({
 
 const Genre = mongoose.model('Genre', genreSchema);
 
+genreSchema.methods.getGenres = function(arr) {
+    var gArray = [];
+    for (var i = 0; i < arr.length; i++) {
+        var genre = await this.findById(arr[i]);
+        if (genre) {
+            gArray.push({ _id: genre, name: genre.name });
+        }
+    }
+    return gArray;
+}
+
 function validateGenre(genre) {
     const schema = {
         name: Joi.string().min(3).max(50).required()

@@ -5,7 +5,7 @@ const _ = require('lodash');
 const express = require('express');
 const router = express.Router();
 
-// Authenticate User Login
+// Authenticate User Login endpoint
 router.post('/', async (req, res) => {
     const { error } = validate(req.body); 
     if (error) return res.status(400).send(error.details[0].message);

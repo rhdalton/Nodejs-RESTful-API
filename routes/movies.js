@@ -26,32 +26,9 @@ router.post('/', [auth, admin], async (req, res) => {
     const { error } = validate(req.body); 
     if (error) return res.status(400).send('Error validation.');
 
-    const genreArray = [];
-    var arr = req.body.genreIds;
-    for (var i = 0; i < arr.length; i++) {
-        var genre = await Genre.findById(arr[i]);
-        if (genre) {
-            genreArray.push({ _id: genre, name: genre.name });
-        }
-    }
-    
-    const directorArray = [];
-    arr = req.body.directorIds;
-    for (var i = 0; i < arr.length; i++) {
-        var director = await Person.findById(arr[i]);
-        if (director) {
-            directorArray.push({ _id: director, name: director.name });
-        }
-    }
-
-    const castArray = [];
-    arr = req.body.actorIds;
-    for (var i = 0; i < arr.length; i++) {
-        var actor = await Person.findById(arr[i]);
-        if (actor) {
-            castArray.push({ _id: actor, name: actor.name });
-        }
-    }
+    const genreArray = Genre.getGenres(req.body.genreIds);    
+    const directorArray = Movie.getPeople(req.body.directorIds);
+    const castArray = Movie.getPeople(req.body.actorIds);
   
     const movie = new Movie({ 
         title: req.body.title,

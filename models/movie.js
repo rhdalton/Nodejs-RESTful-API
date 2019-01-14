@@ -5,7 +5,7 @@ const { castSchema } = require('./cast');
 
 const mongoose = require('mongoose');
 
-const Movie = mongoose.model('Movie', new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
     title: {
         type: String, 
         required: true,
@@ -31,7 +31,21 @@ const Movie = mongoose.model('Movie', new mongoose.Schema({
         type: [castSchema],
         required: true
     }
-}));
+});
+
+const Movie = mongoose.model('Movie', movieSchema);
+
+// method to get people from POST, put in array and return
+movieSchema.methods.getPeople = function(arr) {
+    var pArray = [];
+    for (var i = 0; i < arr.length; i++) {
+        var person = await this.findById(arr[i]);
+        if (person) {
+            pArray.push({ _id: person, name: person.name });
+        }
+    }
+    return pArray;
+};
 
 function validateMovie(movie) {
     // use joi to validate fields

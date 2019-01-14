@@ -8,9 +8,10 @@ This example app catalogs movies and people accessible by registered users with 
 - Express application framework
 - MongoDB backend
 - Handle standard HTTP GET, POST, PUT, DELETE requests
-- User authentication and authorization for access to certain endpoints (POST, PUT, DELETE)
+- Authentication and authorization by JWT for access to certain endpoints (POST, PUT, DELETE)
 - Error logging, Uncaught Exception and Promise handling and logging
 - Automated Unit and Integration Testing for endpoints
+- Environments for development, testing and production
 
 **Route Endpoints:**
 - /api/movies 
