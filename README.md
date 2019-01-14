@@ -1,9 +1,10 @@
 # Nodejs RESTful API Example
 
 This is a RESTful API created with Node.js to demonstrate various techniques and coding practices.
+
 App that catalogs movies and people with access by registered users.
 
-Features Include:
+**Features Include:**
 - Express web application framework
 - MongoDB backend
 - Handle standard HTTP GET, POST, PUT, DELETE requests
@@ -11,14 +12,14 @@ Features Include:
 - Error logging, Uncaught Exception and Promise handling and logging
 - Unit and Integration Testing for endpoints
 
-Route Endpoints:
+**Route Endpoints:**
 - /api/movies 
   - get, create, edit, delete movies in a collection
 - /api/people 
-  - db of actors, directors, writers ect associated with movies collection
+  - collection of actors, directors, writers and others associated with movies
 - /api/users
-  - users with various permissions to access, create, delete movies/people collections
+  - register new users with set permissions to access, create, delete movies/people collections
 - /api/genres
-  - movie genres db associated with movies collection
+  - movie genres collections associated with movies
 - /api/auth
   - user login authentication endpoints
