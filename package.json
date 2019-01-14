@@ -2,9 +2,13 @@
   "name": "nodejs-restful-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose",
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "10.15.0"
   },
   "author": "",
   "license": "ISC",
