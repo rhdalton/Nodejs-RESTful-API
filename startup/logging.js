@@ -28,8 +28,8 @@ module.exports = function() {
         throw ex;
     });
 
-    // Log Express module errors to file
-    winston.add(winston.transports.File, { filename: path.join(log_path, 'logfile.log') });
+    // Log Express module actions to log 
+    winston.add(winston.transports.File, { filename: path.join(log_path, 'full.log') });
 
     // Log Express module errors to MongoDB
     //winston.add(winston.transports.MongoDB, { db: 'mongodb://localhost/moviesapp', level: 'info' });
