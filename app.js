@@ -1,7 +1,6 @@
 /**
- * This is an example Nodejs RESTful API App
- * 
- * Uses the Node.js Express application framework
+ * app.js 
+ * Entry point for this application
  */
 const winston = require('winston');
 const express = require('express');
@@ -14,7 +13,10 @@ require('./startup/db')();
 require('./startup/config')();
 require('./startup/validation')();
 
+require('./startup/prod')(app); // module for production environment
+
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => winston.info(`Listening on port ${port}...`));
 
+// export server for testing access
 module.exports = server;

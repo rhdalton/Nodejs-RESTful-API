@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose --coverage"
+    "test": "jest --watchAll --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.2",
+    "compression": "^1.7.3",
     "config": "^3.0.1",
     "express": "^4.16.4",
     "express-async-errors": "^3.1.1",

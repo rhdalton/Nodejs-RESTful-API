@@ -2,17 +2,18 @@ const request = require('supertest');
 const { Genre } = require('../../models/genre');
 const { User } = require('../../models/user');
 
-let server;
-
 describe('Auth middleware', () => {
+    let server;
+    let token;
     // start server
-    beforeEach(() => { server = require('../../app'); });
+    beforeEach(() => { 
+        server = require('../../app');
+        token = new User({ isAdmin: true }).generateAuthToken();
+    });
     afterEach(async () => {         
         server.close(); 
         await Genre.remove({});        
-    }); // close app
-
-    let token;
+    }); // close app   
 
     // Define the happy path function, then in each test change one parameter that
     // aligns with the name of the test.
@@ -22,10 +23,6 @@ describe('Auth middleware', () => {
             .set('x-auth-token', token)
             .send({ name: 'genre1' });
     }
-
-    beforeEach(() => {
-        token = new User({ isAdmin: true }).generateAuthToken();
-    });
 
     it('should return 401 (unauthorized) if no token is provided', async () => {
         token = '';

@@ -2,7 +2,7 @@
 
 This is a RESTful API created with Node.js to demonstrate various coding techniques and practices.
 
-This is an app that catalogs movies and people accessible by registered users with defined permissions.
+The App catalogs movies and people accessible by registered users with defined permissions.
 
 **Features Include:**
 - Express application framework
@@ -10,7 +10,7 @@ This is an app that catalogs movies and people accessible by registered users wi
 - Handle standard HTTP GET, POST, PUT, DELETE requests
 - User authentication and authorization for access to certain endpoints (POST, PUT, DELETE)
 - Error logging, Uncaught Exception and Promise handling and logging
-- Unit and Integration Testing for endpoints
+- Automated Unit and Integration Testing for endpoints
 
 **Route Endpoints:**
 - /api/movies 
