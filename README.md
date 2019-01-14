@@ -6,7 +6,7 @@ Features include:
 - Uses the Node.js Express web application framework
 - Uses MongoDB backend
 - Handles standard HTTP GET, POST, PUT, DELETE requests
-- Has user authentication and authorization for access to certain endpoints (POST, PUT, DELETE)
+- User authentication and authorization for access to certain endpoints (POST, PUT, DELETE)
 - Logging to files and MongoDB
 
 Routes:
