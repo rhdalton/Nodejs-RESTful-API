@@ -1,17 +1,25 @@
 # Nodejs RESTful API Example
 
-This is a RESTful API I created with Node.js
+This is a RESTful API created with Node.js to demonstrate various coding techniques and practices.
 
-Features include:
-- Uses the Node.js Express web application framework
-- Uses MongoDB backend
-- Handles standard HTTP GET, POST, PUT, DELETE requests
+This is an app that catalogs movies and people accessible by registered users with defined permissions.
+
+**Features Include:**
+- Express application framework
+- MongoDB backend
+- Handle standard HTTP GET, POST, PUT, DELETE requests
 - User authentication and authorization for access to certain endpoints (POST, PUT, DELETE)
-- Logging to files and MongoDB
+- Error logging, Uncaught Exception and Promise handling and logging
+- Unit and Integration Testing for endpoints
 
-Routes:
-- /api/movies
-- /api/people
+**Route Endpoints:**
+- /api/movies 
+  - get, create, edit, delete movies in a collection
+- /api/people 
+  - collection of actors, directors, writers and others associated with movies
 - /api/users
+  - register new users with set permissions to access, create, delete movies/people collections
 - /api/genres
+  - movie genres collections associated with movies
 - /api/auth
+  - user login authentication endpoints
