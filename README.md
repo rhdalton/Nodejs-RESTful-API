@@ -1,4 +1,4 @@
-# Nodejs RESTful API Example
+# Nodejs RESTful API
 
 A RESTful API created with Node.js to demonstrate various coding techniques and practices.
 
@@ -8,7 +8,7 @@ This example app catalogs movies and people accessible by registered users with 
 - Express application framework
 - MongoDB backend
 - Handle standard HTTP GET, POST, PUT, DELETE requests
-- Authentication and authorization by JWT for access to certain endpoints (POST, PUT, DELETE)
+- Authentication and authorization with JWT for access to certain endpoints (POST, PUT, DELETE)
 - Error logging, Uncaught Exception and Promise handling and logging
 - Automated Unit and Integration Testing for endpoints
 - Environments for development, testing and production
