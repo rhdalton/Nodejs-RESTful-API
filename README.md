@@ -1,4 +1,4 @@
-# Nodejs RESTful API Example
+# Nodejs RESTful API
 
 A RESTful API created with Node.js to demonstrate various coding techniques and practices.
 
